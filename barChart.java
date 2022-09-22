@@ -1,4 +1,4 @@
-package com.azuga.training.Api;
+package com.azuga.training.charts;
 
 /*
  * Copyright (c) 2022.  - All Rights Reserved
@@ -7,6 +7,7 @@ package com.azuga.training.Api;
  *  * @Author -LokanathK.
  */
 
+import org.apache.log4j.Logger;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -26,9 +27,10 @@ import java.util.List;
  * the barChart is used to interpretate the bar chart for the rottenTomatoes score of the different movies
  */
 public class barChart extends ApplicationFrame {
-    static List<String> lines = new ArrayList<String>();
-    static List<String> runTime = new ArrayList<String>();
-    static List<Integer> rtScore = new ArrayList<Integer>();
+    private static final Logger loki = Logger.getLogger(barChart.class);
+    static List<String> lines = new ArrayList<>();
+    static List<String> runTime = new ArrayList<>();
+    static List<Integer> rtScore = new ArrayList<>();
 
     /**
      * the constructor is created for the class barChart with  arguments applicationTitle and chartTitle
@@ -38,7 +40,7 @@ public class barChart extends ApplicationFrame {
      */
     public barChart(String applicationTitle, String chartTitle) {
         super(applicationTitle);
-
+        loki.info("enters into the barChart constructor");
         // creating the barChart using JfreeChart class
         JFreeChart barChart = ChartFactory.createBarChart(
                 chartTitle,
@@ -47,10 +49,12 @@ public class barChart extends ApplicationFrame {
                 createDataset(),
                 PlotOrientation.VERTICAL,
                 true, true, false);
+        loki.info("bar-chart is created with movieName and Rt-score as axis-labels");
 
         ChartPanel chartPanel = new ChartPanel(barChart);
         chartPanel.setPreferredSize(new java.awt.Dimension(760, 367));
         setContentPane(chartPanel);
+        loki.info("chart panel is invoked and content is added");
     }
 
     /**
@@ -59,10 +63,13 @@ public class barChart extends ApplicationFrame {
      * @return - method returns the dataset which is used to create charts
      */
     private CategoryDataset createDataset() {
+        loki.debug("moveName and rt-score values adding to dataset");
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
          for(int i=0;i<rtScore.size();i++) {
         dataset.addValue(rtScore.get(i), runTime.get(i),"");
          }
+        loki.debug(" dataset values - "+dataset);
+        loki.info("Dataset is created for the bar-chart in createDataset");
         return dataset;
     }
 
@@ -71,12 +78,17 @@ public class barChart extends ApplicationFrame {
 
         //bufferReader is used to read the content from the csv file of the api
         try (BufferedReader reader = new BufferedReader(new FileReader("/Users/azuga/Desktop/ghibli.csv"))) {
+            loki.info("data is reading from the file given ghibli.csv");
             String currentLine;
             while ((currentLine = reader.readLine()) != null) {
                 lines.add(currentLine);
             }
+            loki.info("data obtained from csv file is appended to list");
+            loki.debug("content stored in the list is "+lines);
         } catch (IOException e) {
+            loki.error("error occurs while reading csv from ghibli.csv");
             e.printStackTrace();
+            loki.error("IOException occurs while reading the file given");
         }
         for (int i = 1; i < lines.size(); i++) {
             data = lines.get(i).split(",");
@@ -84,11 +96,15 @@ public class barChart extends ApplicationFrame {
             runTime.add(data[1]);
             rtScore.add(rt);
         }
+        loki.info("MovieNames and theirs Rt_score is obtained and added to lists");
+        loki.debug("movie names stored in the list "+runTime);
+        loki.debug("Rt-score for movies stored in the list "+rtScore);
 
         //barChart constructor is created with the arguments of applicationTitle and chartTitle
         barChart chart = new barChart("Rating for the Movies",
-                "best movie?");
+                "Movies with their Rt_Score");
         chart.pack();
+        loki.info("bar-chart is created by invoking barChart constructor with appTitle and chartTitle");
         chart.setVisible(true);
     }
 }

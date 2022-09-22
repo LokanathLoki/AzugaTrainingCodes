@@ -1,4 +1,4 @@
-package com.azuga.training.Api;
+package com.azuga.training.charts;
 
 /*
  * Copyright (c) 2022.  - All Rights Reserved
@@ -7,6 +7,7 @@ package com.azuga.training.Api;
  *  * @Author -LokanathK.
  */
 
+import org.apache.log4j.Logger;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -26,9 +27,11 @@ import java.util.List;
  */
 public class LineChart extends ApplicationFrame {
 
-    static List<String> lines = new ArrayList<String>();
-    static List<String> movie = new ArrayList<String>();
-    static List<Integer> runTime = new ArrayList<Integer>();
+    static List<String> lines = new ArrayList<>();
+    static List<String> movie = new ArrayList<>();
+    static List<Integer> runTime = new ArrayList<>();
+
+    static  final Logger log = Logger.getLogger(LineChart.class);
 
     /**
      * the constructor is created for the class LineChart with  arguments applicationTitle and chartTitle
@@ -42,14 +45,15 @@ public class LineChart extends ApplicationFrame {
         // creating the lineChart using JfreeChart class
         JFreeChart lineChart = ChartFactory.createLineChart(
                 chartTitle,
-                "Movie Titles", "Movie RunTime",
+                "Movie Titles", "Movie RunTime(in minutes)",
                 createDataset(),
                 PlotOrientation.VERTICAL,
                 true, true, true);
-
+        log.info("lineChart is created with all the required fields");
         ChartPanel chartPanel = new ChartPanel(lineChart);
         chartPanel.setPreferredSize(new java.awt.Dimension(1960, 567));
         setContentPane(chartPanel);
+        log.info("chartPanel is created with width and height");
     }
 
     /**
@@ -59,9 +63,11 @@ public class LineChart extends ApplicationFrame {
      */
     private DefaultCategoryDataset createDataset() {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        log.info("dataset for line chart is invoked ");
         for(int i=0;i<10;i++) {
             dataset.addValue(runTime.get(i), "RunTime in Minutes", movie.get(i));
         }
+        log.info("the MovieName and RunTime are added to the dataset for LineChart");
         return dataset;
     }
 
@@ -70,11 +76,14 @@ public class LineChart extends ApplicationFrame {
 
         //bufferReader is used to read the content from the csv file of the api
         try (BufferedReader reader = new BufferedReader(new FileReader("/Users/azuga/Desktop/ghibli.csv"))) {
+            log.info("the data is read from the ghibli.csv file");
             String currentLine;
+            if (reader.readLine() == null) log.fatal("error due to empty input file ghibli.csv");
             while ((currentLine = reader.readLine()) != null) {
                 lines.add(currentLine);
             }
         } catch (IOException e) {
+            log.error("error occurs while reading the data from ghibli.csv file");
             e.printStackTrace();
         }
         for (int i = 1; i < lines.size(); i++) {
@@ -83,11 +92,15 @@ public class LineChart extends ApplicationFrame {
             runTime.add(rt);
             movie.add(data[1]);
         }
+        log.info("the data required is accessed and stored to the lists");
+        log.debug("runTime of movies is stored in the list "+runTime);
+        log.debug("Movie nmaes are stored in list "+movie);
 
         //LineChart constructor is created with the arguments of applicationTitle and chartTitle
         LineChart chart = new LineChart(
                 "RunTime Vs title",
                 "Run-Time of various movies");
+        log.info("the LineChart is created with appTitle and chartTitle");
         chart.pack();
         chart.setVisible(true);
     }
