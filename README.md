@@ -101,34 +101,31 @@ The reports created from the Api calls and Formatters were zipped, unzipped and 
     -   --  [ LINUX COMMANDS ](https://github.com/LokanathLoki/AzugaTrainingCodes/tree/main/linuxCommands)
 - REST API
 
-    -   --  [ Ghibli API ](https://github.com/LokanathLoki/AzugaTrainingCodes/blob/features/ghibliApi.java)
-    -   --  [ Museum API ](https://github.com/LokanathLoki/AzugaTrainingCodes/blob/features/apiGenric.java)
+    -   --  [ Ghibli API ](https://github.com/LokanathLoki/AzugaTrainingCodes/tree/features/Api)
+    -   --  [ Museum API ](https://github.com/LokanathLoki/AzugaTrainingCodes/tree/features/Api)
 
 - FILES GENERATION
 
-    -   --  [ PDF FILE](https://github.com/LokanathLoki/AzugaTrainingCodes/blob/features/CSVtoPdf.java)
-    -   --  [ HTML FILE](https://github.com/LokanathLoki/AzugaTrainingCodes/blob/features/CSVtoHtml.java)
-    -   --  [ XML FILE](https://github.com/LokanathLoki/AzugaTrainingCodes/blob/features/JsonToXml.java)
+    -   --  [ PDF FILE](https://github.com/LokanathLoki/AzugaTrainingCodes/tree/features/formats)
+    -   --  [ HTML FILE](https://github.com/LokanathLoki/AzugaTrainingCodes/tree/features/formats)
+    -   --  [ XML FILE](https://github.com/LokanathLoki/AzugaTrainingCodes/tree/features/formats)
 - CREATION OF CHARTS
 
-    -   --  [ BAR GRAPH ](https://github.com/LokanathLoki/AzugaTrainingCodes/blob/charts/barChart.java)
-    -   --  [ LINE CHART ](https://github.com/LokanathLoki/AzugaTrainingCodes/blob/charts/LineChart.java)
-    -   --  [ PIE CHART](https://github.com/LokanathLoki/AzugaTrainingCodes/blob/charts/PieChart.java)
+    -   --  [ BAR GRAPH ](https://github.com/LokanathLoki/AzugaTrainingCodes/tree/features/charts)
+    -   --  [ LINE CHART ](https://github.com/LokanathLoki/AzugaTrainingCodes/tree/features/charts)
+    -   --  [ PIE CHART](https://github.com/LokanathLoki/AzugaTrainingCodes/tree/features/charts)
 - OOPS 
 
-    -   --  [ REST API - OOPS ](https://github.com/11suryasoni/JavaTraining/tree/feature/OOPS/OOPS_RestApi)
-    -   --  [ FORMATTER OOPS ](https://github.com/11suryasoni/JavaTraining/tree/feature/OOPS/Zip_Unzip)
+    -   --  [ OOPS-API ](https://github.com/LokanathLoki/AzugaTrainingCodes/tree/features/oops)
+    -   --  [ FORMATTER OOPS ](https://github.com/LokanathLoki/AzugaTrainingCodes/tree/features/oops)
 
 - ZIP AND Unzip
 
-    -   --  [ ZIP ](https://github.com/11suryasoni/JavaTraining/tree/feature/OOPS/OOPS_RestApi)
-    -   --  [ UNZIP ](https://github.com/11suryasoni/JavaTraining/tree/feature/OOPS/Zip_Unzip)
-    -   --  [ MAIL ](https://github.com/11suryasoni/JavaTraining/tree/feature/OOPS/Zip_Unzip)
+    -   --  [ ZIP ](https://github.com/LokanathLoki/AzugaTrainingCodes/tree/features/zip)
+    -   --  [ UNZIP ](https://github.com/LokanathLoki/AzugaTrainingCodes/tree/features/zip)
+    -   --  [ MAIL ](https://github.com/LokanathLoki/AzugaTrainingCodes/tree/features/zip)
 
-- TESTING WITH JUNIT-5
 
-    -   --  [ UNIT-TESTING ](https://github.com/11suryasoni/JavaTraining/tree/feature/JunitTesting)
-   
 
 
 ## Used By
